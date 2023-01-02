@@ -210,7 +210,7 @@
                     <navigationItem key="navigationItem" id="4XC-cW-J2k"/>
                     <connections>
                         <outlet property="tableView" destination="XdC-z7-5yK" id="lC3-Og-HNE"/>
-                        <segue destination="qZi-J3-Vpn" kind="show" identifier="ShowSingleImage" id="BXl-vS-l6T"/>
+                        <segue destination="qZi-J3-Vpn" kind="presentation" identifier="ShowSingleImage" id="BXl-vS-l6T"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -220,28 +220,67 @@
         <!--Single Image View Controller-->
         <scene sceneID="Gfb-Dj-zNg">
             <objects>
-                <viewController id="qZi-J3-Vpn" customClass="SingleImageViewController" customModule="ImageFeed" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="qZi-J3-Vpn" customClass="SingleImageViewController" customModule="ImageFeed" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VWL-la-BWE">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nKI-8m-sKc">
+                                <rect key="frame" x="76" y="362" width="240" height="128"/>
+                                <viewLayoutGuide key="contentLayoutGuide" id="M2G-1P-VmX"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="poY-C4-lSZ"/>
+                                <connections>
+                                    <outlet property="delegate" destination="qZi-J3-Vpn" id="iP4-hm-mmE"/>
+                                </connections>
+                            </scrollView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="0" translatesAutoresizingMaskIntoConstraints="NO" id="eZ5-7U-9R1">
-                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                                 <color key="backgroundColor" name="YP Black (iOS)"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1dS-t4-Dbe">
+                                <rect key="frame" x="39" y="60" width="9" height="22"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="chevron.backward"/>
+                                <connections>
+                                    <action selector="didTapBackButton" destination="qZi-J3-Vpn" eventType="touchUpInside" id="ImK-Zl-hM0"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m4q-3A-Yhl">
+                                <rect key="frame" x="171.66666666666666" y="751" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="kTW-wo-D8f"/>
+                                    <constraint firstAttribute="width" constant="50" id="saq-19-cpu"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="Sharing"/>
+                                <connections>
+                                    <action selector="didTapShareButton" destination="qZi-J3-Vpn" eventType="touchUpInside" id="lyI-Pe-gF3"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="LZB-sC-vJd"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="eZ5-7U-9R1" firstAttribute="leadingMargin" secondItem="LZB-sC-vJd" secondAttribute="leading" constant="8" id="0af-cr-Wdv"/>
-                            <constraint firstItem="eZ5-7U-9R1" firstAttribute="topMargin" secondItem="LZB-sC-vJd" secondAttribute="top" constant="8" id="P8u-KK-uPu"/>
-                            <constraint firstItem="LZB-sC-vJd" firstAttribute="bottom" secondItem="eZ5-7U-9R1" secondAttribute="bottomMargin" constant="8" id="Ryf-at-rXe"/>
-                            <constraint firstItem="LZB-sC-vJd" firstAttribute="trailing" secondItem="eZ5-7U-9R1" secondAttribute="trailingMargin" constant="8" id="e1I-S2-4pq"/>
+                            <constraint firstItem="eZ5-7U-9R1" firstAttribute="leading" secondItem="VWL-la-BWE" secondAttribute="leading" id="0af-cr-Wdv"/>
+                            <constraint firstAttribute="bottom" secondItem="nKI-8m-sKc" secondAttribute="bottom" id="IeK-w0-2j9"/>
+                            <constraint firstAttribute="trailing" secondItem="nKI-8m-sKc" secondAttribute="trailing" id="NTG-q4-w2y"/>
+                            <constraint firstItem="nKI-8m-sKc" firstAttribute="top" secondItem="VWL-la-BWE" secondAttribute="top" id="OIp-9q-HSr"/>
+                            <constraint firstItem="eZ5-7U-9R1" firstAttribute="top" secondItem="VWL-la-BWE" secondAttribute="top" id="P8u-KK-uPu"/>
+                            <constraint firstItem="m4q-3A-Yhl" firstAttribute="centerX" secondItem="LZB-sC-vJd" secondAttribute="centerX" id="PUN-x0-Vx9"/>
+                            <constraint firstAttribute="bottom" secondItem="eZ5-7U-9R1" secondAttribute="bottom" id="Ryf-at-rXe"/>
+                            <constraint firstItem="1dS-t4-Dbe" firstAttribute="top" secondItem="VWL-la-BWE" secondAttribute="top" constant="60" id="VWa-yg-ty9"/>
+                            <constraint firstAttribute="bottom" secondItem="m4q-3A-Yhl" secondAttribute="bottom" constant="51" id="d8A-iY-DSq"/>
+                            <constraint firstAttribute="trailing" secondItem="eZ5-7U-9R1" secondAttribute="trailing" id="e1I-S2-4pq"/>
+                            <constraint firstItem="1dS-t4-Dbe" firstAttribute="leading" secondItem="VWL-la-BWE" secondAttribute="leading" constant="39" id="ec8-HK-L5X"/>
+                            <constraint firstItem="nKI-8m-sKc" firstAttribute="leading" secondItem="VWL-la-BWE" secondAttribute="leading" id="lJF-uv-0kG"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="zYG-tI-xKD"/>
                     <connections>
+                        <outlet property="backButton" destination="1dS-t4-Dbe" id="zbu-WC-3Hn"/>
                         <outlet property="imageView" destination="eZ5-7U-9R1" id="5Iq-o7-3lo"/>
+                        <outlet property="scrollView" destination="nKI-8m-sKc" id="9Ht-Eg-ZV8"/>
+                        <outlet property="shareButton" destination="m4q-3A-Yhl" id="3Mj-lN-8AZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NwT-vv-Hn1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -278,6 +317,8 @@
         <image name="ActiveHeart" width="30" height="26"/>
         <image name="Avatar" width="70" height="70"/>
         <image name="Exit" width="20" height="22"/>
+        <image name="Sharing" width="51" height="50"/>
+        <image name="chevron.backward" width="9" height="16"/>
         <image name="tab_editorial_active" width="20" height="22"/>
         <image name="tab_profile_active" width="24" height="24"/>
         <namedColor name="YP Black (iOS)">
