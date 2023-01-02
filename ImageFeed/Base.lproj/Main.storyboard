@@ -6,6 +6,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -23,7 +24,7 @@
                         </tabBarAppearance>
                     </tabBar>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="GKr-OR-mPw"/>
+                        <segue destination="AGr-gD-RVK" kind="relationship" relationship="viewControllers" id="GKr-OR-mPw"/>
                         <segue destination="1Yv-AH-Bsn" kind="relationship" relationship="viewControllers" id="iQE-IN-6jM"/>
                     </connections>
                 </tabBarController>
@@ -206,14 +207,70 @@
                             <constraint firstAttribute="trailing" secondItem="XdC-z7-5yK" secondAttribute="trailing" id="hAT-be-st3"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="tab_editorial_active" id="Efk-75-oQt"/>
+                    <navigationItem key="navigationItem" id="4XC-cW-J2k"/>
                     <connections>
                         <outlet property="tableView" destination="XdC-z7-5yK" id="lC3-Og-HNE"/>
+                        <segue destination="qZi-J3-Vpn" kind="show" identifier="ShowSingleImage" id="BXl-vS-l6T"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-735" y="-720"/>
+            <point key="canvasLocation" x="191.6030534351145" y="-720.42253521126759"/>
+        </scene>
+        <!--Single Image View Controller-->
+        <scene sceneID="Gfb-Dj-zNg">
+            <objects>
+                <viewController id="qZi-J3-Vpn" customClass="SingleImageViewController" customModule="ImageFeed" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="VWL-la-BWE">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="0" translatesAutoresizingMaskIntoConstraints="NO" id="eZ5-7U-9R1">
+                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                                <color key="backgroundColor" name="YP Black (iOS)"/>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="LZB-sC-vJd"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="eZ5-7U-9R1" firstAttribute="leadingMargin" secondItem="LZB-sC-vJd" secondAttribute="leading" constant="8" id="0af-cr-Wdv"/>
+                            <constraint firstItem="eZ5-7U-9R1" firstAttribute="topMargin" secondItem="LZB-sC-vJd" secondAttribute="top" constant="8" id="P8u-KK-uPu"/>
+                            <constraint firstItem="LZB-sC-vJd" firstAttribute="bottom" secondItem="eZ5-7U-9R1" secondAttribute="bottomMargin" constant="8" id="Ryf-at-rXe"/>
+                            <constraint firstItem="LZB-sC-vJd" firstAttribute="trailing" secondItem="eZ5-7U-9R1" secondAttribute="trailingMargin" constant="8" id="e1I-S2-4pq"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="zYG-tI-xKD"/>
+                    <connections>
+                        <outlet property="imageView" destination="eZ5-7U-9R1" id="5Iq-o7-3lo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NwT-vv-Hn1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="989" y="-720"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Aqi-qM-ptO">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="AGr-gD-RVK" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="tab_editorial_active" id="Efk-75-oQt"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="uYq-Ff-fYn">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" name="YP White (iOS)"/>
+                        <color key="barTintColor" name="YP White (iOS)"/>
+                        <navigationBarAppearance key="standardAppearance">
+                            <color key="backgroundColor" name="YP Black (iOS)"/>
+                        </navigationBarAppearance>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="WO1-3m-11f"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lCh-Yh-Kjv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-735.1145038167939" y="-720.42253521126759"/>
         </scene>
     </scenes>
     <resources>
@@ -235,5 +292,8 @@
         <namedColor name="YP White (iOS)">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>
