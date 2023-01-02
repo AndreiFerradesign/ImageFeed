@@ -38,43 +38,20 @@
                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
-                                                <button opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0OA-qb-l1v">
-                                                    <rect key="frame" x="337" y="16" width="30" height="26"/>
-                                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                    <state key="normal" image="ActiveHeart"/>
-                                                </button>
-                                                <view alpha="0.20000000000000001" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cDk-sa-S4K" customClass="GradientView" customModule="ImageFeed" customModuleProvider="target">
-                                                    <rect key="frame" x="16" y="187" width="361" height="30"/>
-                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="startColor">
-                                                            <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="endColor">
-                                                            <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="middleColor">
-                                                            <color key="value" name="YP Black (iOS)"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
-                                                </view>
+
                                                 <label opaque="NO" userInteractionEnabled="NO" alpha="0.84999999999999998" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fF5-eF-iey">
                                                     <rect key="frame" x="24" y="193" width="361" height="16"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" name="YP White (iOS)"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="fF5-eF-iey" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="zXY-j5-5rR" secondAttribute="trailing" constant="8" id="2a7-l2-7Em"/>
                                                 <constraint firstAttribute="bottom" secondItem="zXY-j5-5rR" secondAttribute="bottom" constant="4" id="2jK-Tf-qWn"/>
                                                 <constraint firstItem="0OA-qb-l1v" firstAttribute="trailing" secondItem="zXY-j5-5rR" secondAttribute="trailing" constant="-10" id="Rq3-4S-I0e"/>
-                                                <constraint firstItem="cDk-sa-S4K" firstAttribute="leading" secondItem="zXY-j5-5rR" secondAttribute="leading" id="WO4-nN-Y8l"/>
-                                                <constraint firstItem="fF5-eF-iey" firstAttribute="bottom" secondItem="zXY-j5-5rR" secondAttribute="bottom" constant="-8" id="Y6X-dU-OmD"/>
-                                                <constraint firstItem="zXY-j5-5rR" firstAttribute="leading" secondItem="k8e-Mn-GSi" secondAttribute="leading" constant="16" id="cRn-sZ-eEZ"/>
-                                                <constraint firstItem="cDk-sa-S4K" firstAttribute="trailing" secondItem="zXY-j5-5rR" secondAttribute="trailing" id="cen-bm-7lX"/>
-                                                <constraint firstItem="0OA-qb-l1v" firstAttribute="top" secondItem="zXY-j5-5rR" secondAttribute="top" constant="12" id="eK6-pA-Ula"/>
-                                                <constraint firstItem="cDk-sa-S4K" firstAttribute="top" secondItem="fF5-eF-iey" secondAttribute="top" constant="-6" id="hiH-ge-MEL"/>
+
                                                 <constraint firstItem="fF5-eF-iey" firstAttribute="leading" secondItem="zXY-j5-5rR" secondAttribute="leading" constant="8" id="ilK-o5-oI1"/>
                                                 <constraint firstAttribute="trailing" secondItem="zXY-j5-5rR" secondAttribute="trailing" constant="16" id="lTm-CE-XE0"/>
                                                 <constraint firstItem="zXY-j5-5rR" firstAttribute="top" secondItem="k8e-Mn-GSi" secondAttribute="top" constant="4" id="qdE-aD-T5A"/>
