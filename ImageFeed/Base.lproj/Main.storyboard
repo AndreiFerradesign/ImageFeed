@@ -21,7 +21,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                                 <color key="backgroundColor" name="YP Black (iOS)"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ImagesListCell" rowHeight="221" id="s0L-vZ-ApR" customClass="ImagesListCell" customModule="ImageFeed" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ImagesListCell" rowHeight="221" id="s0L-vZ-ApR" customClass="ImagesListCell" customModule="ImageFeed" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="393" height="221"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="s0L-vZ-ApR" id="k8e-Mn-GSi">
@@ -38,28 +38,24 @@
                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
+
                                                 <label opaque="NO" userInteractionEnabled="NO" alpha="0.84999999999999998" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fF5-eF-iey">
                                                     <rect key="frame" x="24" y="193" width="361" height="16"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" name="YP White (iOS)"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0OA-qb-l1v">
-                                                    <rect key="frame" x="337" y="16" width="30" height="26"/>
-                                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                    <state key="normal" image="ActiveHeart"/>
-                                                </button>
+
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="fF5-eF-iey" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="zXY-j5-5rR" secondAttribute="trailing" constant="8" id="2a7-l2-7Em"/>
                                                 <constraint firstAttribute="bottom" secondItem="zXY-j5-5rR" secondAttribute="bottom" constant="4" id="2jK-Tf-qWn"/>
                                                 <constraint firstItem="0OA-qb-l1v" firstAttribute="trailing" secondItem="zXY-j5-5rR" secondAttribute="trailing" constant="-10" id="Rq3-4S-I0e"/>
-                                                <constraint firstItem="fF5-eF-iey" firstAttribute="bottom" secondItem="zXY-j5-5rR" secondAttribute="bottom" constant="-8" id="Y6X-dU-OmD"/>
-                                                <constraint firstItem="zXY-j5-5rR" firstAttribute="leading" secondItem="k8e-Mn-GSi" secondAttribute="leading" constant="16" id="cRn-sZ-eEZ"/>
-                                                <constraint firstItem="0OA-qb-l1v" firstAttribute="top" secondItem="zXY-j5-5rR" secondAttribute="top" constant="12" id="eK6-pA-Ula"/>
+
                                                 <constraint firstItem="fF5-eF-iey" firstAttribute="leading" secondItem="zXY-j5-5rR" secondAttribute="leading" constant="8" id="ilK-o5-oI1"/>
                                                 <constraint firstAttribute="trailing" secondItem="zXY-j5-5rR" secondAttribute="trailing" constant="16" id="lTm-CE-XE0"/>
                                                 <constraint firstItem="zXY-j5-5rR" firstAttribute="top" secondItem="k8e-Mn-GSi" secondAttribute="top" constant="4" id="qdE-aD-T5A"/>
+                                                <constraint firstItem="cDk-sa-S4K" firstAttribute="bottom" secondItem="zXY-j5-5rR" secondAttribute="bottom" id="rGo-GO-DBE"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" name="YP Black (iOS)"/>
