@@ -21,6 +21,9 @@
 		75AE513829634B9C00B252BC /* SingleImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AE513729634B9C00B252BC /* SingleImageViewController.swift */; };
 		75BDCD6F295B0C88000A9EF5 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BDCD6E295B0C88000A9EF5 /* UIColor+Extensions.swift */; };
 		75BDCD74295DC9A4000A9EF5 /* ImagesListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BDCD73295DC9A4000A9EF5 /* ImagesListCell.swift */; };
+		75D7A6E32986863A00F0AA5F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D7A6E22986863A00F0AA5F /* Constants.swift */; };
+		75D7A6E62986BAF300F0AA5F /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D7A6E52986BAF300F0AA5F /* AuthViewController.swift */; };
+		75D7A6E82986C2F500F0AA5F /* WebViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D7A6E72986C2F500F0AA5F /* WebViewViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +62,9 @@
 		75AE513729634B9C00B252BC /* SingleImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleImageViewController.swift; sourceTree = "<group>"; };
 		75BDCD6E295B0C88000A9EF5 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		75BDCD73295DC9A4000A9EF5 /* ImagesListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesListCell.swift; sourceTree = "<group>"; };
+		75D7A6E22986863A00F0AA5F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		75D7A6E52986BAF300F0AA5F /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
+		75D7A6E72986C2F500F0AA5F /* WebViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +115,7 @@
 		75A32523295083A00038493E /* ImageFeed */ = {
 			isa = PBXGroup;
 			children = (
+				75D7A6E42986BAA900F0AA5F /* Auth */,
 				75AE513429632DFB00B252BC /* Profile */,
 				75BDCD70295B0EE8000A9EF5 /* Presentation */,
 				75BDCD6D295B0BF6000A9EF5 /* Helpers */,
@@ -118,6 +125,7 @@
 				75A3252D295083A30038493E /* Assets.xcassets */,
 				75A3252F295083A30038493E /* LaunchScreen.storyboard */,
 				75A32532295083A30038493E /* Info.plist */,
+				75D7A6E22986863A00F0AA5F /* Constants.swift */,
 			);
 			path = ImageFeed;
 			sourceTree = "<group>";
@@ -164,6 +172,15 @@
 				75AE513729634B9C00B252BC /* SingleImageViewController.swift */,
 			);
 			path = Presentation;
+			sourceTree = "<group>";
+		};
+		75D7A6E42986BAA900F0AA5F /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				75D7A6E52986BAF300F0AA5F /* AuthViewController.swift */,
+				75D7A6E72986C2F500F0AA5F /* WebViewViewController.swift */,
+			);
+			path = Auth;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -299,12 +316,15 @@
 			files = (
 				75A32529295083A00038493E /* ImagesListViewController.swift in Sources */,
 				75A32525295083A00038493E /* AppDelegate.swift in Sources */,
+				75D7A6E62986BAF300F0AA5F /* AuthViewController.swift in Sources */,
 				75934665295E04B4007CA48B /* GradientView.swift in Sources */,
+				75D7A6E82986C2F500F0AA5F /* WebViewViewController.swift in Sources */,
 				75BDCD74295DC9A4000A9EF5 /* ImagesListCell.swift in Sources */,
 				75AE513629632E2B00B252BC /* ProfileViewController.swift in Sources */,
 				75A32527295083A00038493E /* SceneDelegate.swift in Sources */,
 				75AE513829634B9C00B252BC /* SingleImageViewController.swift in Sources */,
 				75BDCD6F295B0C88000A9EF5 /* UIColor+Extensions.swift in Sources */,
+				75D7A6E32986863A00F0AA5F /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
