@@ -15,8 +15,8 @@ protocol AuthViewControllerDelegate: AnyObject {
 final class AuthViewController: UIViewController {
     
     private let showWebViewSegueIdentifier = "ShowWebView"
-    private let oAuth2TokenStorage = OAuth2TokenStorage()
-    private let oAuth2Service = OAuth2Service()
+    private let oAuth2TokenStorage = OAuth2TokenStorage.shared
+    private let oAuth2Service = OAuth2Service.shared
     weak var delegate: AuthViewControllerDelegate?
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
