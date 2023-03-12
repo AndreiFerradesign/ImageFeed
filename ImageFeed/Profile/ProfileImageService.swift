@@ -16,15 +16,16 @@ struct UserResult: Codable {
 }
 
 struct ImageResult: Codable {
-    let small: String
-    let medium: String
-    let large: String
+     let small: String
+     let medium: String
+     let large: String
 }
 
 final class ProfileImageService {
     static let didChangeNotification = Notification.Name(rawValue: "ProfileImageProviderDidChange")
     static let shared = ProfileImageService()
-    private(set) var avatarURL: String?
+    private init(){}
+    private (set) var avatarURL: String?
     private let urlSession = URLSession.shared
     private var task: URLSessionTask?
     

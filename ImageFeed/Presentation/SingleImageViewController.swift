@@ -6,8 +6,12 @@
 //
 
 import UIKit
+import ProgressHUD
+import Kingfisher
 
 final class SingleImageViewController: UIViewController {
+   
+    var imageURL: URL!
     
     var image: UIImage! {
         didSet {
@@ -27,17 +31,33 @@ final class SingleImageViewController: UIViewController {
     }
 
     @IBAction private func didTapShareButton() {
-        let share = UIActivityViewController(activityItems: [image as Any], applicationActivities: nil)
+        guard let image = imageView.image else { return }
+        let share = UIActivityViewController(activityItems: [image], applicationActivities: nil)
         present(share, animated: true)
         
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        imageView.image = image
+        //imageView.image = image
         scrollView.minimumZoomScale = 0.1
         scrollView.minimumZoomScale = 1.25
-        rescaleAndCenterImageInScrollView(image: image)
+        setImage()
+    }
+    
+    func setImage() {
+        UIBlockingProgressHUD.show()
+        imageView.kf.setImage(with: imageURL) { [weak self] result in
+            UIBlockingProgressHUD.dismiss()
+            
+            guard let self = self else { return }
+            switch result {
+            case .success(let imageResult):
+                self.rescaleAndCenterImageInScrollView(image: imageResult.image)
+            case .failure:
+                self.showError()
+            }
+        }
     }
     
     private func rescaleAndCenterImageInScrollView(image: UIImage) {
@@ -56,6 +76,33 @@ final class SingleImageViewController: UIViewController {
         let y = (newContentSize.height - visibleRectSize.height) / 2
         scrollView.setContentOffset(CGPoint(x: x, y: y), animated: false)
     }
+    
+    private func showError() {
+            let alert = UIAlertController(
+                title: "Что-то пошло не так",
+                message: "Попробовать ещё раз?",
+                preferredStyle: .alert
+            )
+            
+            let dismissAction = UIAlertAction(
+                title: "Не надо",
+                style: .default
+            ) { _ in
+                alert.dismiss(animated: true)
+            }
+            
+            let retryAction = UIAlertAction(
+                title: "Попробовать еше раз?",
+                style: .default
+            ) { [weak self] _ in
+                guard let self = self else { return }
+                self.setImage()
+            }
+            alert.addAction(dismissAction)
+            alert.addAction(retryAction)
+            
+            self.present(alert, animated: true)
+        }
 }
 
 extension SingleImageViewController: UIScrollViewDelegate {
