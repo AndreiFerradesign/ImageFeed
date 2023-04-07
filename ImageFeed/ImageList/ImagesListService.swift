@@ -131,6 +131,7 @@ final class ImagesListService {
                 }
             }
         }
+    
     private func makeRequest(
             path: String) -> URLRequest {
                 guard let baseURL = URL(string: path, relativeTo: defaultBaseURL) else {
@@ -144,16 +145,6 @@ final class ImagesListService {
                 }
                 request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
                 return request
-            }
-//    private func makeRequest(
-//            path: String,
-//            httpMethod: String) -> URLRequest {
-//                guard let baseURL = URL(string: path, relativeTo: defaultBaseURL) else { fatalError("url is nil") }
-//                var request = URLRequest(url: baseURL)
-//                guard let token = OAuth2TokenStorage().token else { fatalError("token is nil")}
-//                request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
-//                request.httpMethod = httpMethod
-//                return request
-//        }
-    
+        }
+
 }
