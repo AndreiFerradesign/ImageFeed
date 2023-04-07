@@ -12,7 +12,7 @@ protocol ImagesListCellDelegate: AnyObject {
     func imageListCellDidTapLike(_ cell: ImagesListCell)
 }
 
-    class ImagesListCell: UITableViewCell {
+final class ImagesListCell: UITableViewCell {
     
     static let reuseIdentifier = "ImagesListCell"
     
@@ -22,7 +22,7 @@ protocol ImagesListCellDelegate: AnyObject {
     
     weak var delegate: ImagesListCellDelegate?
     
-    @IBAction private func likeButtonClicked() {
+        @IBAction private func likeButtonClicked() {
        delegate?.imageListCellDidTapLike(self)
     }
     

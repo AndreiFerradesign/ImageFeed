@@ -42,6 +42,10 @@ struct Photo {
     let isLiked: Bool
 }
 
+struct LikeResult: Decodable {
+    let photo: PhotoResult
+}
+
 final class ImagesListService {
     static let shared = ImagesListService()
     private init() {}
@@ -50,10 +54,11 @@ final class ImagesListService {
     private var task: URLSessionTask?
     private let urlSession = URLSession.shared
     private let dateFormatter = ISO8601DateFormatter()
-    
     static let didChangeNotification = Notification.Name(rawValue: "ImagesListServiceDidChange")
     
     func fetchPhotosNextPage() {
+        
+        guard task == nil else { return }
         
         let nextPage = lastLoadedPage == nil ? 1 : lastLoadedPage! + 1
         lastLoadedPage = (lastLoadedPage ?? 0) + 1
@@ -61,7 +66,8 @@ final class ImagesListService {
         assert(Thread.isMainThread)
         task?.cancel()
         
-        let request = makeRequest(path: "/photos?page=\(nextPage)&&per_page=10", httpMethod: "GET")
+        var request = makeRequest(path: "/photos?page=\(nextPage)&&per_page=10")
+        request.httpMethod = "GET"
         let task = urlSession.objectTask(for: request) { [weak self] (result: Result<[PhotoResult], Error>) in
             guard let self = self else { return }
             switch result {
@@ -92,15 +98,62 @@ final class ImagesListService {
         task.resume()
     }
     
-    private func makeRequest(
-            path: String,
-            httpMethod: String) -> URLRequest {
-                guard let baseURL = URL(string: path, relativeTo: defaultBaseURL) else { fatalError("url is nil") }
-                var request = URLRequest(url: baseURL)
-                guard let token = OAuth2TokenStorage().token else { fatalError("token is nil")}
-                request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
-                request.httpMethod = httpMethod
-                return request
+    func changeLike(photoId: String, isLike: Bool, _ completion: @escaping (Result<Void, Error>) -> Void) {
+            assert(Thread.isMainThread)
+            task?.cancel()
+            
+        var request = makeRequest(path: "/photos/\(photoId)/like")
+            if isLike {
+                request.httpMethod = "POST"
+            } else {
+                request.httpMethod = "DELETE"
+            }
+            
+            urlSession.objectTask(for: request) { [weak self] (result: Result<LikeResult, Error>) in
+                guard let self = self else { return }
+                switch result {
+                case .success:
+                    if let index = self.photos.firstIndex(where: { $0.id == photoId }) {
+                        let photo = self.photos[index]
+                        let newPhoto = Photo(
+                            id: photo.id,
+                            size: photo.size,
+                            createdAt: photo.createdAt,
+                            welcomeDescription: photo.welcomeDescription,
+                            thumbImageURL: photo.thumbImageURL,
+                            fullImageURL: photo.fullImageURL,
+                            isLiked: !photo.isLiked)
+                        self.photos[index] = newPhoto
+                        completion(.success(()))
+                    }
+                case .failure(let error):
+                    completion(.failure(error))
+                }
+            }
         }
+    private func makeRequest(
+            path: String) -> URLRequest {
+                guard let baseURL = URL(string: path, relativeTo: defaultBaseURL) else {
+                    assertionFailure("url is nil")
+                    return URLRequest(url: URL(string: "")!)
+                }
+                var request = URLRequest(url: baseURL)
+                guard let token = OAuth2TokenStorage().token else {
+                    assertionFailure("token is nil")
+                    return URLRequest(url: URL(string: "")!)
+                }
+                request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+                return request
+            }
+//    private func makeRequest(
+//            path: String,
+//            httpMethod: String) -> URLRequest {
+//                guard let baseURL = URL(string: path, relativeTo: defaultBaseURL) else { fatalError("url is nil") }
+//                var request = URLRequest(url: baseURL)
+//                guard let token = OAuth2TokenStorage().token else { fatalError("token is nil")}
+//                request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+//                request.httpMethod = httpMethod
+//                return request
+//        }
     
 }

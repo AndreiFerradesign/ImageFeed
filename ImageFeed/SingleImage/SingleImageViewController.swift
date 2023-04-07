@@ -11,7 +11,7 @@ import Kingfisher
 
 final class SingleImageViewController: UIViewController {
    
-    var imageURL: URL!
+    var fullImageURL: URL!
     
     var image: UIImage! {
         didSet {
@@ -39,7 +39,6 @@ final class SingleImageViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //imageView.image = image
         scrollView.minimumZoomScale = 0.1
         scrollView.minimumZoomScale = 1.25
         setImage()
@@ -47,9 +46,8 @@ final class SingleImageViewController: UIViewController {
     
     func setImage() {
         UIBlockingProgressHUD.show()
-        imageView.kf.setImage(with: imageURL) { [weak self] result in
+        imageView.kf.setImage(with: fullImageURL) { [weak self] result in
             UIBlockingProgressHUD.dismiss()
-            
             guard let self = self else { return }
             switch result {
             case .success(let imageResult):
