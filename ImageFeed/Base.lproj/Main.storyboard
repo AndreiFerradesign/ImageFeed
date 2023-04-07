@@ -61,6 +61,9 @@
                                                     <rect key="frame" x="337" y="16" width="30" height="26"/>
                                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                     <state key="normal" image="ActiveHeart"/>
+                                                    <connections>
+                                                        <action selector="likeButtonClicked" destination="s0L-vZ-ApR" eventType="touchUpInside" id="mxJ-jH-igI"/>
+                                                    </connections>
                                                 </button>
                                                 <view alpha="0.20000000000000001" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cDk-sa-S4K" customClass="GradientView" customModule="ImageFeed" customModuleProvider="target">
                                                     <rect key="frame" x="16" y="187" width="361" height="30"/>

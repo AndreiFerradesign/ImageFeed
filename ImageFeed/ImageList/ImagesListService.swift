@@ -8,7 +8,7 @@
 import Foundation
 
 
-struct PhotoResult: Codable {
+struct PhotoResult: Decodable {
     let id: String
     let createdAt: String
     let width: Int
@@ -24,7 +24,7 @@ struct PhotoResult: Codable {
     }
 }
 
-struct UrlsResult: Codable {
+struct UrlsResult: Decodable {
     let raw: String
     let full: String
     let regular: String
@@ -42,7 +42,7 @@ struct Photo {
     let isLiked: Bool
 }
 
-final class ImagesListService{
+final class ImagesListService {
     static let shared = ImagesListService()
     private init() {}
     private (set) var photos: [Photo] = []
