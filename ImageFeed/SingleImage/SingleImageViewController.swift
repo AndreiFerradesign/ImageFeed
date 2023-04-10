@@ -40,14 +40,14 @@ final class SingleImageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         scrollView.minimumZoomScale = 0.1
-        scrollView.minimumZoomScale = 1.25
+        scrollView.maximumZoomScale = 1.25
         setImage()
     }
     
     func setImage() {
         UIBlockingProgressHUD.show()
         imageView.kf.setImage(with: fullImageURL) { [weak self] result in
-            UIBlockingProgressHUD.dismiss()
+            //UIBlockingProgressHUD.dismiss()
             guard let self = self else { return }
             switch result {
             case .success(let imageResult):
@@ -55,6 +55,7 @@ final class SingleImageViewController: UIViewController {
             case .failure:
                 self.showError()
             }
+            UIBlockingProgressHUD.dismiss()
         }
     }
     

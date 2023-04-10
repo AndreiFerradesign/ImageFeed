@@ -34,7 +34,7 @@ final class ProfileImageService {
         assert(Thread.isMainThread)
         task?.cancel()
         
-        let request = makeRequest(token: token, username: username)
+        guard let request = makeRequest(token: token, username: username) else { return assertionFailure("Error profile photo request")}
         let task = urlSession.objectTask(for: request) { [weak self] (result: Result<UserResult, Error>) in
             guard let self = self else { return }
             switch result {
@@ -54,7 +54,7 @@ final class ProfileImageService {
         task.resume()
     }
     
-    private func makeRequest(token: String, username: String) -> URLRequest {
+    private func makeRequest(token: String, username: String) -> URLRequest? {
         var urlComponents = URLComponents()
         urlComponents.path = "/users/\(username)"
         guard let url = urlComponents.url(relativeTo: defaultBaseURL) else { fatalError("Failed to create URL") }

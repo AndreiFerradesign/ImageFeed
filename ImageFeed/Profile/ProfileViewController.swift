@@ -157,7 +157,7 @@ final class ProfileViewController: UIViewController {
     }
     
     private func logOut() {
-        OAuth2TokenStorage.clean()
+        WebViewViewController.clean()
         guard let window = UIApplication.shared.windows.first else {
             assertionFailure("Invalid Configuration")
             return

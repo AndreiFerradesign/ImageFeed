@@ -6,12 +6,12 @@
 //
 
 import Foundation
-import SwiftKeychainWrapper
 import WebKit
+import SwiftKeychainWrapper
 
 final class OAuth2TokenStorage {
     
-    private enum Keys: String {
+     enum Keys: String {
         case bearerToken
     }
     
@@ -30,16 +30,4 @@ final class OAuth2TokenStorage {
             }
         }
     }
-    static func clean() {
-            KeychainWrapper.standard.removeObject(forKey: Keys.bearerToken.rawValue)
-            HTTPCookieStorage.shared.removeCookies(since: Date.distantPast)
-            WKWebsiteDataStore.default().fetchDataRecords(ofTypes: WKWebsiteDataStore.allWebsiteDataTypes()) { records in
-                records.forEach { record in
-                    WKWebsiteDataStore.default().removeData(
-                        ofTypes: record.dataTypes,
-                        for: [record],
-                        completionHandler: {})
-                }
-            }
-        }
 }

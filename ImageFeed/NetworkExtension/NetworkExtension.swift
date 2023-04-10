@@ -12,8 +12,8 @@ enum NetworkError: Error {
     
     case httpStatusCode(Int)
     case urlRequestError(Error)
-    case urlSessionError
-    
+    case urlSessionError(Error)
+    case urlRequestCreationError
 }
 
 extension URLSession {
@@ -43,8 +43,10 @@ extension URLSession {
                 }
             } else if let error = error {
                 fulfillCompletion(.failure(NetworkError.urlRequestError(error)))
+            } else if let error = error {
+                fulfillCompletion(.failure(NetworkError.urlSessionError(error)))
             } else {
-                fulfillCompletion(.failure(NetworkError.urlSessionError))
+                fulfillCompletion(.failure(NetworkError.urlRequestCreationError))
             }
         })
         task.resume()
