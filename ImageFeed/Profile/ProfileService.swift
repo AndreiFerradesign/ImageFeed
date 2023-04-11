@@ -21,6 +21,7 @@ struct ProfileResult: Codable {
         case bio
     }
 }
+
 struct Profile {
     let username: String
     let name: String
@@ -35,8 +36,6 @@ struct Profile {
     }
 }
 
-
-
 final class ProfileService {
     static let shared = ProfileService()
     private let urlSession = URLSession.shared
@@ -49,7 +48,7 @@ final class ProfileService {
         assert(Thread.isMainThread)
         task?.cancel()
         
-        let request = makeRequest(token: token)
+        guard let request = makeRequest(token: token) else { return assertionFailure("Error profile data request")}
         let task = urlSession.objectTask(for: request) { [weak self] (result: Result<ProfileResult, Error>) in
             guard let self = self else { return }
             switch result {
@@ -64,7 +63,7 @@ final class ProfileService {
         task.resume()
     }
     
-    private func makeRequest(token: String) -> URLRequest {
+    private func makeRequest(token: String) -> URLRequest? {
         var urlComponents = URLComponents()
         urlComponents.path = "/me"
         guard let url = urlComponents.url(relativeTo: defaultBaseURL) else { fatalError("Failed to create URL") }

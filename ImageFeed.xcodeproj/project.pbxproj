@@ -16,6 +16,7 @@
 		752BA7AD29BCC0590091AD0C /* NetworkExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752BA7AC29BCC0590091AD0C /* NetworkExtension.swift */; };
 		752BA7AF29BCC0A20091AD0C /* AlertPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752BA7AE29BCC0A20091AD0C /* AlertPresenter.swift */; };
 		75934665295E04B4007CA48B /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75934664295E04B4007CA48B /* GradientView.swift */; };
+		75951A6429BDEA2F003E2F44 /* ImagesListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75951A6329BDEA2F003E2F44 /* ImagesListService.swift */; };
 		75A32525295083A00038493E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A32524295083A00038493E /* AppDelegate.swift */; };
 		75A32527295083A00038493E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A32526295083A00038493E /* SceneDelegate.swift */; };
 		75A32529295083A00038493E /* ImagesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A32528295083A00038493E /* ImagesListViewController.swift */; };
@@ -64,6 +65,7 @@
 		752BA7AC29BCC0590091AD0C /* NetworkExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkExtension.swift; sourceTree = "<group>"; };
 		752BA7AE29BCC0A20091AD0C /* AlertPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertPresenter.swift; sourceTree = "<group>"; };
 		75934664295E04B4007CA48B /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		75951A6329BDEA2F003E2F44 /* ImagesListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesListService.swift; sourceTree = "<group>"; };
 		75A32521295083A00038493E /* ImageFeed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImageFeed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75A32524295083A00038493E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		75A32526295083A00038493E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -134,6 +136,14 @@
 			path = NetworkExtension;
 			sourceTree = "<group>";
 		};
+		75951A6529BE600C003E2F44 /* SingleImage */ = {
+			isa = PBXGroup;
+			children = (
+				75AE513729634B9C00B252BC /* SingleImageViewController.swift */,
+			);
+			path = SingleImage;
+			sourceTree = "<group>";
+		};
 		75A32518295083A00038493E = {
 			isa = PBXGroup;
 			children = (
@@ -157,11 +167,12 @@
 		75A32523295083A00038493E /* ImageFeed */ = {
 			isa = PBXGroup;
 			children = (
+				75951A6529BE600C003E2F44 /* SingleImage */,
 				75D7A6F2298710A000F0AA5F /* ServiceAccessLayer */,
 				75D7A6EF298707DA00F0AA5F /* SplashViewController */,
 				75D7A6E42986BAA900F0AA5F /* Auth */,
 				75AE513429632DFB00B252BC /* Profile */,
-				75BDCD70295B0EE8000A9EF5 /* Presentation */,
+				75BDCD70295B0EE8000A9EF5 /* ImageList */,
 				752BA7B029BCF33D0091AD0C /* TabBarController */,
 				752BA7B129BCF37B0091AD0C /* NetworkExtension */,
 				75BDCD6D295B0BF6000A9EF5 /* Helpers */,
@@ -214,14 +225,14 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
-		75BDCD70295B0EE8000A9EF5 /* Presentation */ = {
+		75BDCD70295B0EE8000A9EF5 /* ImageList */ = {
 			isa = PBXGroup;
 			children = (
 				75A32528295083A00038493E /* ImagesListViewController.swift */,
 				75BDCD73295DC9A4000A9EF5 /* ImagesListCell.swift */,
-				75AE513729634B9C00B252BC /* SingleImageViewController.swift */,
+				75951A6329BDEA2F003E2F44 /* ImagesListService.swift */,
 			);
-			path = Presentation;
+			path = ImageList;
 			sourceTree = "<group>";
 		};
 		75D7A6E42986BAA900F0AA5F /* Auth */ = {
@@ -407,6 +418,7 @@
 				75D7A6EA2987027A00F0AA5F /* OAuthTokenResponseBody.swift in Sources */,
 				75D7A6E62986BAF300F0AA5F /* AuthViewController.swift in Sources */,
 				752BA7A729BCB4220091AD0C /* TabBarController.swift in Sources */,
+				75951A6429BDEA2F003E2F44 /* ImagesListService.swift in Sources */,
 				75934665295E04B4007CA48B /* GradientView.swift in Sources */,
 				752BA7AF29BCC0A20091AD0C /* AlertPresenter.swift in Sources */,
 				75D7A6EE298703BB00F0AA5F /* OAuth2TokenStorage.swift in Sources */,

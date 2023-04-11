@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Cjf-Hv-xCd">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Cjf-Hv-xCd">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -61,6 +61,9 @@
                                                     <rect key="frame" x="337" y="16" width="30" height="26"/>
                                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                     <state key="normal" image="ActiveHeart"/>
+                                                    <connections>
+                                                        <action selector="likeButtonClicked" destination="s0L-vZ-ApR" eventType="touchUpInside" id="mxJ-jH-igI"/>
+                                                    </connections>
                                                 </button>
                                                 <view alpha="0.20000000000000001" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cDk-sa-S4K" customClass="GradientView" customModule="ImageFeed" customModuleProvider="target">
                                                     <rect key="frame" x="16" y="187" width="361" height="30"/>
@@ -141,18 +144,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nKI-8m-sKc">
-                                <rect key="frame" x="76" y="362" width="240" height="128"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nKI-8m-sKc">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="0" translatesAutoresizingMaskIntoConstraints="NO" id="eZ5-7U-9R1">
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                                        <color key="backgroundColor" name="YP Black (iOS)"/>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="eZ5-7U-9R1" firstAttribute="top" secondItem="nKI-8m-sKc" secondAttribute="top" id="HiP-qf-ueB"/>
+                                    <constraint firstItem="eZ5-7U-9R1" firstAttribute="leading" secondItem="nKI-8m-sKc" secondAttribute="leading" id="Jya-8F-rCW"/>
+                                    <constraint firstAttribute="trailing" secondItem="eZ5-7U-9R1" secondAttribute="trailing" id="K7X-PS-e51"/>
+                                    <constraint firstAttribute="bottom" secondItem="eZ5-7U-9R1" secondAttribute="bottom" id="hly-5i-oUM"/>
+                                </constraints>
                                 <viewLayoutGuide key="contentLayoutGuide" id="M2G-1P-VmX"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="poY-C4-lSZ"/>
                                 <connections>
                                     <outlet property="delegate" destination="qZi-J3-Vpn" id="iP4-hm-mmE"/>
                                 </connections>
                             </scrollView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="0" translatesAutoresizingMaskIntoConstraints="NO" id="eZ5-7U-9R1">
-                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                                <color key="backgroundColor" name="YP Black (iOS)"/>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1dS-t4-Dbe">
                                 <rect key="frame" x="39" y="60" width="9" height="22"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -175,20 +186,16 @@
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="LZB-sC-vJd"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="YP Background (iOS)"/>
                         <constraints>
-                            <constraint firstItem="eZ5-7U-9R1" firstAttribute="leading" secondItem="VWL-la-BWE" secondAttribute="leading" id="0af-cr-Wdv"/>
-                            <constraint firstAttribute="bottom" secondItem="nKI-8m-sKc" secondAttribute="bottom" id="IeK-w0-2j9"/>
-                            <constraint firstAttribute="trailing" secondItem="nKI-8m-sKc" secondAttribute="trailing" id="NTG-q4-w2y"/>
-                            <constraint firstItem="nKI-8m-sKc" firstAttribute="top" secondItem="VWL-la-BWE" secondAttribute="top" id="OIp-9q-HSr"/>
-                            <constraint firstItem="eZ5-7U-9R1" firstAttribute="top" secondItem="VWL-la-BWE" secondAttribute="top" id="P8u-KK-uPu"/>
+                            <constraint firstItem="nKI-8m-sKc" firstAttribute="top" secondItem="VWL-la-BWE" secondAttribute="top" id="2j0-ad-EJD"/>
+                            <constraint firstAttribute="bottom" secondItem="nKI-8m-sKc" secondAttribute="bottom" id="KJN-c2-5ke"/>
                             <constraint firstItem="m4q-3A-Yhl" firstAttribute="centerX" secondItem="LZB-sC-vJd" secondAttribute="centerX" id="PUN-x0-Vx9"/>
-                            <constraint firstAttribute="bottom" secondItem="eZ5-7U-9R1" secondAttribute="bottom" id="Ryf-at-rXe"/>
+                            <constraint firstItem="nKI-8m-sKc" firstAttribute="leading" secondItem="LZB-sC-vJd" secondAttribute="leading" id="TOx-4H-STx"/>
                             <constraint firstItem="1dS-t4-Dbe" firstAttribute="top" secondItem="VWL-la-BWE" secondAttribute="top" constant="60" id="VWa-yg-ty9"/>
                             <constraint firstAttribute="bottom" secondItem="m4q-3A-Yhl" secondAttribute="bottom" constant="51" id="d8A-iY-DSq"/>
-                            <constraint firstAttribute="trailing" secondItem="eZ5-7U-9R1" secondAttribute="trailing" id="e1I-S2-4pq"/>
+                            <constraint firstItem="LZB-sC-vJd" firstAttribute="trailing" secondItem="nKI-8m-sKc" secondAttribute="trailing" id="dtI-oA-zFP"/>
                             <constraint firstItem="1dS-t4-Dbe" firstAttribute="leading" secondItem="VWL-la-BWE" secondAttribute="leading" constant="39" id="ec8-HK-L5X"/>
-                            <constraint firstItem="nKI-8m-sKc" firstAttribute="leading" secondItem="VWL-la-BWE" secondAttribute="leading" id="lJF-uv-0kG"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="zYG-tI-xKD"/>
@@ -273,7 +280,7 @@
                                 </wkWebViewConfiguration>
                             </wkWebView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="naZ-WG-3cK">
-                                <rect key="frame" x="16" y="82" width="9" height="22"/>
+                                <rect key="frame" x="16" y="23" width="9" height="22"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" image="nav_back_button"/>
                                 <connections>
@@ -281,7 +288,7 @@
                                 </connections>
                             </button>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.10000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="7F4-Zv-mlq">
-                                <rect key="frame" x="0.0" y="110" width="393" height="4"/>
+                                <rect key="frame" x="0.0" y="51" width="393" height="4"/>
                                 <color key="progressTintColor" name="YP Black (iOS)"/>
                             </progressView>
                         </subviews>
@@ -369,7 +376,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="m2J-mh-d7b" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="zb5-bL-gDb">
-                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -391,6 +398,9 @@
         <image name="chevron.backward" width="9" height="16"/>
         <image name="nav_back_button" width="9" height="16"/>
         <image name="tab_editorial_active" width="20" height="22"/>
+        <namedColor name="YP Background (iOS)">
+            <color red="0.10199999809265137" green="0.10599999874830246" blue="0.13300000131130219" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="YP Black (iOS)">
             <color red="0.10199999809265137" green="0.10599999874830246" blue="0.13300000131130219" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

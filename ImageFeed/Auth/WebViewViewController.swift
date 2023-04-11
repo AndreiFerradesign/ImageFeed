@@ -7,6 +7,7 @@
 
 import UIKit
 import WebKit
+import SwiftKeychainWrapper
 
 protocol WebViewViewControllerDelegate: AnyObject {
     func webViewViewController(_ vc: WebViewViewController, didAuthenticateWithCode code: String)
@@ -80,6 +81,19 @@ final class WebViewViewController: UIViewController {
         progressView.progress = Float(webView.estimatedProgress)
         progressView.isHidden = fabs(webView.estimatedProgress - 1.0) <= 0.0001
     }
+    
+    static func clean() {
+            KeychainWrapper.standard.removeObject(forKey: OAuth2TokenStorage.Keys.bearerToken.rawValue)
+            HTTPCookieStorage.shared.removeCookies(since: Date.distantPast)
+            WKWebsiteDataStore.default().fetchDataRecords(ofTypes: WKWebsiteDataStore.allWebsiteDataTypes()) { records in
+                records.forEach { record in
+                    WKWebsiteDataStore.default().removeData(
+                        ofTypes: record.dataTypes,
+                        for: [record],
+                        completionHandler: {})
+                }
+            }
+        }
 }
 
 extension WebViewViewController: WKNavigationDelegate {
