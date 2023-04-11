@@ -65,7 +65,12 @@ extension ImagesListViewController  {
             self.tableView.reloadRows(at: [IndexPath], with: .automatic)
             cell.cellImage.kf.indicatorType = .none
         }
-        cell.dateLabel.text = dateFormatter.string(from: photos[IndexPath.row].createdAt ?? Date())
+        let photo = photos[IndexPath.row]
+        if let photoCreatedAt = photo.createdAt {
+            cell.dateLabel.text = dateFormatter.string(from: photoCreatedAt)
+        } else {
+            cell.dateLabel.text = ""
+        }
         cell.setIsLiked(isLiked: photos[IndexPath.row].isLiked)
     }
     
