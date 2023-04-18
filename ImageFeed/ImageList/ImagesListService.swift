@@ -141,7 +141,7 @@ final class ImagesListService {
     
     private func makeRequest(
             path: String) -> URLRequest? {
-                guard let baseURL = URL(string: path, relativeTo: defaultBaseURL) else {
+                guard let baseURL = URL(string: path, relativeTo: Constants.defaultBaseURL) else {
                     assertionFailure("url is nil")
                     return nil
                 }

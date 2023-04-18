@@ -66,7 +66,7 @@ final class ProfileService {
     private func makeRequest(token: String) -> URLRequest? {
         var urlComponents = URLComponents()
         urlComponents.path = "/me"
-        guard let url = urlComponents.url(relativeTo: defaultBaseURL) else { fatalError("Failed to create URL") }
+        guard let url = urlComponents.url(relativeTo: Constants.defaultBaseURL) else { fatalError("Failed to create URL") }
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
