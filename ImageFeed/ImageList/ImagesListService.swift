@@ -32,7 +32,7 @@ struct UrlsResult: Decodable {
     let thumb: String
 }
 
-struct Photo {
+public struct Photo {
     let id: String
     let size: CGSize
     let createdAt: Date?
