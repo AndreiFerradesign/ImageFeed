@@ -5,10 +5,19 @@
 //  Created by Andrei on 02.01.2023.
 //
 
+
 import UIKit
 import Kingfisher
 
-final class ProfileViewController: UIViewController {
+public protocol ProfileViewControllerProtocol: AnyObject {
+    var presenter: ProfilePresenterProtocol? { get set }
+    func updateProfileDetails(profile: Profile)
+    func updateAvatar()
+}
+
+final class ProfileViewController: UIViewController & ProfileViewControllerProtocol {
+    
+    var presenter: ProfilePresenterProtocol?
     
     private let profileImageServiceNotification = ProfileImageService.didChangeNotification
     private let profileImageService = ProfileImageService.shared
@@ -65,7 +74,7 @@ final class ProfileViewController: UIViewController {
             style: .default,
             handler: { [weak self] _ in
                 guard let self = self else { return }
-                self.logOut()
+                presenter?.logOut()
             }))
         alert.addAction(UIAlertAction(
             title: "Нет",
@@ -76,25 +85,22 @@ final class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        updateAvatar()
         view.backgroundColor = UIColor(named: "YP Black (iOS)")
-        
-        guard let profile = profileService.profile else { return }
-        updateProfileDetails(profile: profile)
+        updateAvatar()
         initProfileStoryboard()
+        presenter?.viewDidLoad()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        profileImageServiceObserver = NotificationCenter.default
-            .addObserver(forName: profileImageServiceNotification,
-                         object: nil,
-                         queue: .main) { [weak self] _ in
-                guard let self = self else { return }
-                self.updateAvatar()
-            }
+//        profileImageServiceObserver = NotificationCenter.default
+//            .addObserver(forName: profileImageServiceNotification,
+//                         object: nil,
+//                         queue: .main) { [weak self] _ in
+//                guard let self = self else { return }
+//                self.updateAvatar()
+//            }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -103,7 +109,7 @@ final class ProfileViewController: UIViewController {
         NotificationCenter.default.removeObserver(self, name: profileImageServiceObserver as? NSNotification.Name, object: nil)
     }
     
-    private func updateAvatar() {
+    func updateAvatar() {
         guard
             let profileImageURL = profileImageService.avatarURL,
             let url = URL(string: profileImageURL)
@@ -114,7 +120,7 @@ final class ProfileViewController: UIViewController {
                                  options: [.processor(processor)])
     }
     
-    private func updateProfileDetails(profile: Profile) {
+     func updateProfileDetails(profile: Profile) {
         nameLabel.text = profile.name
         loginNameLabel.text = profile.loginName
         descriptionLabel.text = profile.bio
@@ -155,15 +161,5 @@ final class ProfileViewController: UIViewController {
             button.heightAnchor.constraint(equalToConstant: 22),
         ])
     }
-    
-    private func logOut() {
-        WebViewViewController.clean()
-        guard let window = UIApplication.shared.windows.first else {
-            assertionFailure("Invalid Configuration")
-            return
-        }
-        let splashViewController = SplashViewController()
-        window.rootViewController = splashViewController
-    }
-}
 
+}
